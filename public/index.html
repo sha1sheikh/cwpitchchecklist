@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Charity Week | Institution Pitch Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#16234f;
+    --blue:#2d5bb8;
+    --purple:#6c3f9e;
+    --green:#23804a;
+    --orange:#ef7d1a;
+    --dark:#0d152e;
+    --ink:#1f2433;
+    --line:#e4e6ee;
+    --bg:#f5f6f9;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 22px 64px}
+
+  /* Header */
+  .brand{
+    font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.14em;
+    font-size:clamp(15px,2.4vw,20px);color:var(--navy);text-align:center;
+    margin:0 0 2px;
+  }
+  .brand .wk{color:var(--orange)}
+  .brand sup{font-size:.5em;font-weight:700}
+  h1{
+    font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.005em;
+    font-size:clamp(30px,7.5vw,62px);line-height:.98;color:var(--navy);
+    text-align:center;margin:0 0 16px;text-transform:uppercase;
+  }
+  .lede{text-align:center;color:#3c4252;max-width:760px;margin:0 auto 18px;font-size:15px}
+  .ribbon{
+    display:flex;align-items:center;justify-content:center;gap:16px;
+    color:var(--orange);font-weight:700;font-size:clamp(13px,2vw,16px);
+    margin:6px 0 34px;text-align:center;
+  }
+  .ribbon::before,.ribbon::after{content:"";height:2px;width:clamp(20px,8vw,90px);background:var(--orange);flex:0 0 auto}
+
+  /* Section block */
+  .section{
+    display:grid;grid-template-columns:230px 1fr;gap:0;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;position:relative;box-shadow:0 1px 0 rgba(16,23,46,.02);
+  }
+  .badge{
+    position:absolute;top:-14px;left:-12px;z-index:3;
+    width:46px;height:46px;border-radius:50%;
+    background:var(--navy);color:#fff;border:4px solid var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;
+  }
+  .panel{
+    color:#fff;padding:26px 22px;display:flex;flex-direction:column;gap:14px;
+  }
+  .panel .ico{font-size:30px;line-height:1}
+  .panel h2{
+    font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;
+    font-size:18px;line-height:1.1;margin:0;letter-spacing:.02em;
+  }
+  .goal{
+    margin-top:auto;background:rgba(255,255,255,.16);border-radius:10px;
+    padding:10px 12px;font-size:12.5px;line-height:1.45;
+  }
+  .goal b{display:inline-block;background:rgba(255,255,255,.92);color:var(--ink);
+    font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;margin-bottom:5px}
+
+  .blue .panel{background:var(--blue)} .blue .goal b{color:var(--blue)}
+  .purple .panel{background:var(--purple)} .purple .goal b{color:var(--purple)}
+  .green .panel{background:var(--green)} .green .goal b{color:var(--green)}
+  .orange .panel{background:var(--orange)} .orange .goal b{color:var(--orange)}
+  .dark .panel{background:var(--dark)} .dark .goal b{color:var(--dark)}
+
+  /* Items */
+  .items{padding:20px 22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+  .check{
+    display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;
+    padding:13px 0;border-bottom:1px dashed var(--line);cursor:pointer;
+  }
+  .items > .check:last-child,.grid2 .col .check:last-child{border-bottom:none}
+  .check input{
+    appearance:none;-webkit-appearance:none;margin:2px 0 0;
+    width:22px;height:22px;border:2px solid #c4c8d4;border-radius:5px;
+    background:#fff;cursor:pointer;flex:0 0 auto;position:relative;transition:.12s;
+  }
+  .check input:checked{background:var(--green);border-color:var(--green)}
+  .check input:checked::after{
+    content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;
+    border:solid #fff;border-width:0 3px 3px 0;transform:rotate(42deg);
+  }
+  .check input:focus-visible{outline:3px solid #9bb6e6;outline-offset:2px}
+  .ctxt{font-size:14px;color:#2a2f3d}
+  .ctxt .h{font-weight:700;color:var(--ink);display:block;margin-bottom:2px}
+  .ctxt a{color:var(--green);text-decoration:none;font-weight:600;word-break:break-word}
+  .ctxt a:hover{text-decoration:underline}
+  .check:has(input:checked) .ctxt{opacity:.55}
+  .check:has(input:checked) .ctxt .h{text-decoration:line-through}
+
+  /* donation pills */
+  .pills{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px}
+  .pill{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#3a3f4d}
+  .pill span{
+    width:42px;height:42px;border-radius:50%;color:#fff;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+    font-family:'Archivo',sans-serif;
+  }
+  .p90{background:var(--green)} .p7{background:var(--purple)} .p3{background:var(--orange)}
+
+  /* connector arrow */
+  .arrow{display:flex;justify-content:center;padding:8px 0;color:var(--navy)}
+  .arrow svg{width:20px;height:26px}
+  .blue + .arrow{color:var(--blue)} .purple + .arrow{color:var(--purple)}
+  .green + .arrow{color:var(--green)} .orange + .arrow{color:var(--orange)}
+
+  /* formula footer */
+  .formula{
+    margin-top:30px;border:2px solid #f6d9bd;background:#fff7ef;border-radius:14px;
+    padding:20px 18px;text-align:center;
+  }
+  .formula h3{
+    font-family:'Archivo',sans-serif;font-weight:800;color:var(--orange);
+    letter-spacing:.04em;margin:0 0 14px;font-size:clamp(15px,2.6vw,20px);text-transform:uppercase;
+  }
+  .flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 6px}
+  .step{display:flex;align-items:center;gap:7px;font-weight:700;font-size:12.5px;color:var(--navy)}
+  .step .e{font-size:18px}
+  .sep{color:var(--orange);font-weight:800}
+  .star{color:var(--orange);font-size:20px}
+  .remember{text-align:center;margin-top:20px;color:#3c4252;font-size:13.5px}
+  .remember b{color:var(--orange)}
+
+  .progress{
+    position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;
+    background:rgba(245,246,249,.92);backdrop-filter:blur(6px);
+    padding:10px 0 12px;margin:0 0 18px;
+  }
+  .bar{flex:1;height:8px;border-radius:99px;background:#e4e6ee;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .25s}
+  .pct{font-size:12.5px;font-weight:700;color:var(--green);min-width:74px;text-align:right}
+  .reset{
+    border:1px solid var(--line);background:#fff;color:#5a6173;border-radius:8px;
+    font:600 12px 'Inter',sans-serif;padding:6px 12px;cursor:pointer;flex:0 0 auto;
+  }
+  .reset:hover{border-color:#c4c8d4;color:var(--ink)}
+  .reset:focus-visible{outline:3px solid #9bb6e6;outline-offset:2px}
+
+  @media (max-width:720px){
+    .section{grid-template-columns:1fr}
+    .panel{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px;padding:18px 18px 16px}
+    .panel .ico{font-size:24px}
+    .goal{flex-basis:100%;margin-top:6px}
+    .grid2{grid-template-columns:1fr}
+    .grid2 .col:first-child .check:last-child{border-bottom:1px dashed var(--line)}
+  }
+  @media print{
+    .progress{display:none}
+    body{background:#fff}
+    .section{break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="brand">CHARITY <span class="wk">WEEK</span><sup>™</sup></p>
+  <h1>Institution Pitch Checklist</h1>
+  <p class="lede">Use this checklist to guide your pitch and make sure you cover everything. The goal is to build rapport, communicate the vision, show impact, explain our support, and answer questions.</p>
+  <div class="ribbon">JazakAllah khair for representing Charity Week!</div>
+
+  <div class="progress">
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="pct" id="pctText">0 of 0</div>
+    <button id="resetBtn" class="reset">Reset</button>
+  </div>
+
+  <!-- 1 -->
+  <section class="section blue">
+    <span class="badge">1</span>
+    <div class="panel">
+      <div class="ico">💬</div>
+      <h2>Intros &amp; Icebreakers</h2>
+      <div class="goal"><b>Goal</b>Build rapport and set a positive tone.</div>
+    </div>
+    <div class="items">
+      <label class="check"><input type="checkbox"><span class="ctxt">When someone joins the call, am I asking how they are keeping?</span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt">Am I doing an icebreaker &ndash; &ldquo;what is your name, what do you do, and an interesting fact?&rdquo;</span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt">I&rsquo;m responsible for setting the tone/energy &ndash; am I taking interest in their responses and building conversation?</span></label>
+    </div>
+  </section>
+
+  <div class="arrow"><svg viewBox="0 0 20 26" fill="none"><path d="M10 0v22M2 15l8 9 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- 2 -->
+  <section class="section purple">
+    <span class="badge">2</span>
+    <div class="panel">
+      <div class="ico">🎯</div>
+      <h2>Vision of CW</h2>
+      <div class="goal"><b>Goal</b>Help them understand WHY Charity Week exists.</div>
+    </div>
+    <div class="items">
+      <label class="check"><input type="checkbox"><span class="ctxt">Have I explained that we are a unity campaign, not a fundraising campaign first and foremost?</span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt">Have I explained that our goal is to unite the ummah, and how we&rsquo;re planning to go about doing that?</span></label>
+    </div>
+  </section>
+
+  <div class="arrow"><svg viewBox="0 0 20 26" fill="none"><path d="M10 0v22M2 15l8 9 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- 3 -->
+  <section class="section green">
+    <span class="badge">3</span>
+    <div class="panel">
+      <div class="ico">🌍</div>
+      <h2>Global Impact, Reach &amp; Projects</h2>
+      <div class="goal"><b>Goal</b>Build confidence and credibility in Charity Week.</div>
+    </div>
+    <div class="items">
+      <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Projects Unwrapped?</span><a href="https://charityweek.com/projects-unwrapped/" target="_blank" rel="noopener">charityweek.com/projects-unwrapped</a></span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Annual Reports?</span><a href="https://charityweek.com/annual-reports/" target="_blank" rel="noopener">charityweek.com/annual-reports</a></span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt">Have I explained that our main focus is long-term sustainable projects? Also cover that we do emergency appeals from time to time (e.g. &pound;1 million donation for Gaza in 2023, Turkey &amp; Syria earthquakes 2023).</span></label>
+      <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Have I explained our donation policy? For every &pound;1 we spend:</span>
+        <div class="pills">
+          <div class="pill"><span class="p90">90p</span>helps people in need</div>
+          <div class="pill"><span class="p7">7p</span>goes towards raising more funds</div>
+          <div class="pill"><span class="p3">3p</span>is spent on admin costs</div>
+        </div>
+      </span></label>
+    </div>
+  </section>
+
+  <div class="arrow"><svg viewBox="0 0 20 26" fill="none"><path d="M10 0v22M2 15l8 9 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- 4 -->
+  <section class="section orange">
+    <span class="badge">4</span>
+    <div class="panel">
+      <div class="ico">💼</div>
+      <h2>What We Provide to You</h2>
+      <div class="goal"><b>Goal</b>Show that Charity Week removes workload rather than adding to it.</div>
+    </div>
+    <div class="items">
+      <div class="grid2">
+        <div class="col">
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Dedicated Institution Support Member</span>A dedicated point of contact who is part of your ISoc/school/scout group. We provide constant support throughout planning &amp; execution and act as a direct line between you and IR/CW Shura.</span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Charity Week Essentials</span><a href="https://sites.google.com/charityweek.com/eventplans/essentials" target="_blank" rel="noopener">sites.google.com/charityweek.com/eventplans/essentials</a></span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Regional Hike / Challenge</span>Expensive for you to run on your own &ndash; we subsidise costs and take away the headache of planning.</span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Scholars &amp; Speakers</span>We can offer Scholars &amp; Nasheed Artists who have gone through the screening process. We can STILL support your events if someone has not been screened; it just can&rsquo;t be labelled as a CW event due to govt funding.</span></label>
+        </div>
+        <div class="col">
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Expert Fundraisers</span>Experienced Community Fundraisers from Islamic Relief (Aleesha and Sabina) ready to support throughout the year, not just during Charity Week. Islamic Relief is one of the biggest organisations in the sector &ndash; we guarantee efficiency after years of experience.</span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Event Resources</span>AV equipment (like sound systems) that can cost thousands? We handle it. Card machines, t-shirts, buckets, mascot costumes &ndash; whatever ideas you have, we can support you.</span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Annual Dinner</span>We gather all institutions that have participated in Charity Week across the Midlands, Wales &amp; West to celebrate our efforts and achievements &ndash; helping orphans in need.</span></label>
+          <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Financial Model Walkthrough (ISOCs ONLY)</span>Has your CF in the call gone through the Financial Model we offer?</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="arrow"><svg viewBox="0 0 20 26" fill="none"><path d="M10 0v22M2 15l8 9 8-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+  <!-- 5 -->
+  <section class="section dark">
+    <span class="badge">5</span>
+    <div class="panel">
+      <div class="ico">❓</div>
+      <h2>Q&amp;A</h2>
+      <div class="goal"><b>Goal</b>Leave with clear next steps.</div>
+    </div>
+    <div class="items">
+      <label class="check"><input type="checkbox"><span class="ctxt"><span class="h">Q&amp;A</span>Give space for questions, address any concerns, and ensure they have everything they need to move forward.</span></label>
+    </div>
+  </section>
+
+  <!-- formula -->
+  <div class="formula">
+    <h3>Successful Pitch Formula</h3>
+    <div class="flow">
+      <span class="star">★</span>
+      <span class="step"><span class="e">💬</span>Rapport</span><span class="sep">→</span>
+      <span class="step"><span class="e">🎯</span>Vision</span><span class="sep">→</span>
+      <span class="step"><span class="e">🌍</span>Impact</span><span class="sep">→</span>
+      <span class="step"><span class="e">💼</span>Support</span><span class="sep">→</span>
+      <span class="step"><span class="e">💬</span>Q&amp;A</span><span class="sep">→</span>
+      <span class="step"><span class="e">🤝</span>Follow Up</span>
+      <span class="star">★</span>
+    </div>
+  </div>
+
+  <p class="remember">💡 Remember: <b>be confident</b>, <b>stay genuine</b>, and <b>speak from the heart</b>. You are representing the Ummah!</p>
+
+</div>
+
+<script>
+  const KEY = 'cw-pitch-checklist-v1';
+  const boxes = Array.from(document.querySelectorAll('.check input'));
+  const fill = document.getElementById('barFill');
+  const txt = document.getElementById('pctText');
+
+  boxes.forEach((b,i)=>b.dataset.k = 'c'+i);
+
+  function load(){
+    try{
+      const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+      boxes.forEach(b=>{ if(saved[b.dataset.k]) b.checked = true; });
+    }catch(e){/* preview sandbox blocks storage; ignore */}
+  }
+  function save(){
+    try{
+      const state = {};
+      boxes.forEach(b=>{ if(b.checked) state[b.dataset.k] = 1; });
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }catch(e){/* ignore */}
+  }
+  function update(){
+    const done = boxes.filter(b=>b.checked).length;
+    const pct = Math.round((done/boxes.length)*100);
+    fill.style.width = pct + '%';
+    txt.textContent = done + ' of ' + boxes.length;
+  }
+  boxes.forEach(b=>b.addEventListener('change', ()=>{ save(); update(); }));
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    boxes.forEach(b=>b.checked = false);
+    save();
+    update();
+  });
+  load();
+  update();
+</script>
+</body>
+</html>
